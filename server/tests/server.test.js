@@ -113,11 +113,19 @@ describe('GET/todos/:id',()=>{
           }).catch((e) => done(e));
         });
     });
-    // it('Should return 404 if todo not found',(done)=>{
-    //
-    // })
-    // it('Should return 404 if ObjectId is invalid',(done)=>{
-    //
-    // })
+    it('Should return 404 if todo not found',(done)=>{
+      var hexId = new ObjectId().toHexString();
+      request(app)
+      .delete(`/todos/${hexId}`)
+      .expect(404)
+      .end(done)
+    })
+    it('Should return 404 if ObjectId is invalid',(done)=>{
+      var hexId = new ObjectId().toHexString();
+      request(app)
+      .delete(`/todos/12342`)
+      .expect(404)
+      .end(done)
+    })
 })
 })
