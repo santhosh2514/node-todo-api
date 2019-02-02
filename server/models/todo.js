@@ -6,7 +6,6 @@ var Todo=mongoose.model('Todo',{
     minlength:1,
     maxlength:260,
     trim:true
-
   },
   completed:{
     type:Boolean,
@@ -16,5 +15,9 @@ var Todo=mongoose.model('Todo',{
     type:Number,
     default:null
   },
+  _creator:{
+    type:mongoose.Schema.Types.ObjectId,
+    required:true
+  }
 })
 module.exports={Todo}
